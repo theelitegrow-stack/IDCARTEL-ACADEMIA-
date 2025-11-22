@@ -1,0 +1,421 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>IDCARTEL — Academia de Trading Profesional</title>
+<meta name="description" content="IDCARTEL: Academia de Trading especializada en IPDA y Smart Money. Curso profesional de 12 vídeos, canales VIP, lives diarias, mentoring y soporte. Suscripción por contacto directo." />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<style>
+  /* -----------------------------------------
+     Reset + variables
+     ----------------------------------------- */
+  :root{
+    --bg:#070708;
+    --panel:#0f1012;
+    --muted:#9aa0a6;
+    --text:#e7eef6;
+    --accent:#00d084;
+    --accent-2:#00b3a6;
+    --glass: rgba(255,255,255,0.03);
+    --maxw:1200px;
+    --radius:16px;
+    --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, "Roboto Mono", "Segoe UI Mono", monospace;
+    --ease:cubic-bezier(.2,.9,.25,1);
+  }
+  *{box-sizing:border-box}
+  html,body{height:100%}
+  body{
+    margin:0;font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    background:
+      radial-gradient(800px 400px at 10% 10%, rgba(0,208,132,0.03), transparent 10%),
+      radial-gradient(600px 300px at 90% 90%, rgba(0,176,255,0.02), transparent 10%),
+      linear-gradient(180deg,var(--bg),#040405 120%);
+    color:var(--text); -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .wrap{max-width:var(--maxw);margin:32px auto;padding:28px;}
+  header{
+    display:flex;align-items:center;justify-content:space-between;gap:18px;
+    padding:18px;border-radius:14px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+    border:1px solid rgba(255,255,255,0.03);
+    backdrop-filter: blur(6px);
+  }
+  .brand{display:flex;align-items:center;gap:14px}
+  .logo{
+    width:68px;height:68px;border-radius:12px;background:
+    conic-gradient(from 180deg at 50% 50%, rgba(0,208,132,0.12), rgba(0,176,255,0.08));
+    display:flex;align-items:center;justify-content:center;font-weight:800;font-size:15px;
+    color:var(--accent);letter-spacing:1px;border:1px solid rgba(255,255,255,0.03);
+  }
+  .brand h1{margin:0;font-size:18px;letter-spacing:1px}
+  .brand p{margin:0;font-size:13px;color:var(--muted)}
+  nav{display:flex;gap:14px;align-items:center}
+  nav a{color:var(--muted);text-decoration:none;font-weight:600;font-size:13px}
+  /* Hero */
+  .hero{
+    display:grid;grid-template-columns:1fr 420px;gap:28px;margin-top:22px;align-items:start;
+  }
+  .card{
+    background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+    padding:24px;border-radius:18px;border:1px solid rgba(255,255,255,0.03);
+    box-shadow: 0 10px 30px rgba(2,6,23,0.45);
+  }
+  .eyebrow{color:var(--accent);font-weight:800;letter-spacing:0.8px;font-size:13px}
+  h2{margin:0 0 12px 0;font-size:22px}
+  h3{margin:0 0 8px 0;font-size:18px}
+  h4{margin:0 0 6px 0;font-size:15px}
+  p.lead{color:var(--muted);margin:12px 0 18px}
+  .lead-strong{color:#dff7ee;font-weight:700}
+  ul.features{list-style:none;padding:0;margin:14px 0 0;display:flex;flex-direction:column;gap:12px}
+  ul.features li{background:linear-gradient(180deg, rgba(255,255,255,0.01), transparent); padding:12px;border-radius:12px;border:1px solid rgba(255,255,255,0.02);font-weight:700;color:#e6f7ee}
+  .price-block{display:flex;flex-direction:column;gap:6px;margin-top:14px}
+  .price-big{font-size:28px;font-weight:900;color:var(--accent);letter-spacing:0.8px}
+  .muted{color:var(--muted)}
+  .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin-top:16px}
+  .video-list{display:grid;gap:10px}
+  .video-item{background:rgba(255,255,255,0.02);padding:12px;border-radius:10px;border:1px solid rgba(255,255,255,0.02);font-weight:700}
+  /* Timeline / steps */
+  .steps{display:flex;flex-direction:column;gap:14px;margin-top:14px}
+  .step{display:flex;gap:12px;align-items:flex-start}
+  .step .num{min-width:44px;height:44px;border-radius:10px;background:linear-gradient(180deg,#07110d, rgba(0,208,132,0.04));display:flex;align-items:center;justify-content:center;font-weight:800;color:var(--accent)}
+  .step .txt{flex:1}
+  /* Cards inline */
+  .cards{display:flex;gap:12px;flex-wrap:wrap;margin-top:12px}
+  .mini{flex:1;min-width:240px;padding:12px;border-radius:12px;background:rgba(255,255,255,0.01);border:1px solid rgba(255,255,255,0.02)}
+  /* Testimonials */
+  .testimonials{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px}
+  .test{padding:12px;border-radius:12px;background:linear-gradient(180deg, rgba(255,255,255,0.01), transparent);border:1px solid rgba(255,255,255,0.02)}
+  .quote{font-style:italic;color:var(--muted);margin:8px 0 0}
+  /* FAQ */
+  .faq{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:12px}
+  .q{padding:12px;border-radius:12px;background:rgba(255,255,255,0.01);border:1px solid rgba(255,255,255,0.02)}
+  /* Contact & legal */
+  .contact{display:flex;flex-direction:column;gap:6px}
+  .contact .contact-line{display:flex;gap:8px;align-items:center}
+  .contact .label{min-width:120px;color:var(--muted);font-weight:700}
+  .contact .value{font-weight:800;color:#dff7ee}
+  /* footer */
+  footer{margin-top:28px;padding:18px;border-radius:12px;border:1px solid rgba(255,255,255,0.03);display:flex;justify-content:space-between;align-items:center}
+  .copyright{color:var(--muted);font-size:13px}
+  /* subtle animations */
+  .fade-up{opacity:0;transform:translateY(8px);transition:all .6s var(--ease);}
+  .inview{opacity:1;transform:translateY(0);}
+  .pulse { animation: pulse 3s infinite; }
+  @keyframes pulse {
+    0%{transform:scale(1)}
+    50%{transform:scale(1.02)}
+    100%{transform:scale(1)}
+  }
+  /* responsive */
+  @media (max-width:1000px){
+    .hero{grid-template-columns:1fr}
+    .grid{grid-template-columns:1fr}
+    .testimonials{grid-template-columns:1fr}
+    .faq{grid-template-columns:1fr}
+    nav{display:none}
+  }
+  @media (max-width:520px){
+    .wrap{padding:16px;margin:16px auto}
+    .logo{width:52px;height:52px}
+  }
+</style>
+</head>
+<body>
+  <div class="wrap" id="wrap">
+    <header>
+      <div class="brand">
+        <div class="logo">IDCARTEL</div>
+        <div>
+          <h1>IDCARTEL</h1>
+          <p>Academia de Trading • IPDA &amp; Smart Money</p>
+        </div>
+      </div>
+      <nav aria-hidden="true">
+        <a>Inicio</a>
+        <a>Servicios</a>
+        <a>Curso</a>
+        <a>Contacto</a>
+      </nav>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero">
+      <main class="card fade-up" id="mainCard">
+        <div class="eyebrow">Entiende el algoritmo IPDA — Deja de operar a ciegas</div>
+        <h2>IDCARTEL — Estrategia institucional, reglas claras y ejecución profesional</h2>
+        <p class="lead">
+          <span class="lead-strong">El mercado está controlado.</span> No es suerte: hay flujos institucionales y algoritmos (IPDA &amp; Smart Money) que dictan dónde se mueve el precio. IDCARTEL te enseña a detectar esos controles y a operar con un sistema reproducible — desde la instalación hasta la gestión avanzada de la operativa.
+        </p>
+
+        <ul class="features" aria-hidden="false">
+          <li>Canales VIP (Telegram &amp; WhatsApp): análisis, zonas de interés y operativas en tiempo real.</li>
+          <li>Curso profesional de 12 vídeos: metodología paso a paso.</li>
+          <li>Lives privadas diarias con traders profesionales realizando operaciones en vivo.</li>
+          <li>Mentoring, soporte y posibilidad de sesiones privadas por video llamada.</li>
+        </ul>
+
+        <div class="price-block" role="note" aria-label="Precios">
+          <div class="price-big">$300</div>
+          <div class="muted">Primer mes (acceso completo: canales VIP, curso 12 vídeos, lives y soporte)</div>
+          <div style="margin-top:6px" class="muted">$30 / mes — Reactivación mensual para mantener el acceso al sistema y a los canales</div>
+          <div style="margin-top:10px" class="muted">Para suscribirte: contacto directo por correo electrónico.</div>
+        </div>
+
+        <div class="steps" aria-hidden="false">
+          <div class="step">
+            <div class="num">1</div>
+            <div class="txt">
+              <strong>Módulo de Inicio:</strong>
+              <div class="muted">Fundamentos IPDA, filosofía Smart Money y por qué los traders que no entienden esto pierden capital intentando adivinar.</div>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="num">2</div>
+            <div class="txt">
+              <strong>Instalación y herramientas:</strong>
+              <div class="muted">Configuración de la plataforma, indicadores recomendados, layouts y preparación del espacio de trabajo para scalping y day trading.</div>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="num">3</div>
+            <div class="txt">
+              <strong>Reglas de entrada y gestión:</strong>
+              <div class="muted">Entradas basadas en flujo institucional, gestión de riesgo, posicionamiento y salida con criterios objetivos.</div>
+            </div>
+          </div>
+        </div>
+
+      </main>
+
+      <aside class="card fade-up" style="align-self:start">
+        <div style="display:flex;flex-direction:column;gap:12px">
+          <div style="display:flex;justify-content:space-between;align-items:center">
+            <strong>Resumen ejecutivo</strong>
+            <div style="font-weight:800;color:var(--accent)">IDCARTEL</div>
+          </div>
+
+          <div class="muted">Equipo: day traders y scalpers especializados en IPDA y Smart Money. Ofrecemos formación práctica y acompañamiento en operativa real.</div>
+
+          <div style="margin-top:12px">
+            <h4>¿Qué incluye la membresía?</h4>
+            <div class="cards">
+              <div class="mini"><strong>Canales VIP</strong><div class="muted" style="margin-top:6px">Acceso a análisis, alertas y operativas compartidas en tiempo real.</div></div>
+              <div class="mini"><strong>Curso 12 vídeos</strong><div class="muted" style="margin-top:6px">Módulos estructurados con teoría y práctica, material descargable y ejercicios.</div></div>
+              <div class="mini"><strong>Lives diarias</strong><div class="muted" style="margin-top:6px">Operativa guiada por un trader profesional en sesiones privadas.</div></div>
+            </div>
+          </div>
+
+          <div style="margin-top:12px">
+            <h4>Soporte & Mentoring</h4>
+            <div class="muted">Chat de apoyo, contacto directo con administradores y disponibilidad para video llamadas según horario y demanda.</div>
+          </div>
+
+          <div style="margin-top:12px">
+            <h4>Acceso</h4>
+            <div class="muted">El proceso de suscripción se realiza contactando directamente por correo electrónico. No hay contratación automática: cada alta se gestiona manualmente para garantizar control de calidad y verificación de acceso.</div>
+          </div>
+        </div>
+      </aside>
+    </section>
+
+    <!-- INTRODUCCIÓN EXTENDIDA -->
+    <section class="card fade-up" style="margin-top:20px;">
+      <h2>Por qué el enfoque IPDA &amp; Smart Money es superior</h2>
+      <p class="muted">Operar sin entender la estructura de mercado y los flujos institucionales equivale a apostar. La estrategia IPDA (Institutional Price Dynamics Algorithm) y las técnicas de Smart Money permiten:</p>
+      <ul class="features" style="margin-top:12px">
+        <li>Identificar zonas donde los grandes actores concentran órdenes (liquidez).</li>
+        <li>Detectar manipulación algorítmica y puntos de reversión controlados por flujo institucional.</li>
+        <li>Establecer entradas con ventaja estadística y salida con gestión objetiva.</li>
+      </ul>
+
+      <div class="grid">
+        <div>
+          <h3>Qué significa 'mercado controlado'</h3>
+          <p class="muted">Los grandes fondos, bancos y algoritmos dominan el volumen y la dirección en momentos clave. Comprender cómo y cuándo actúan te permite operar con probabilidad favorable y evitar la improvisación.</p>
+        </div>
+        <div>
+          <h3>Cómo IDCARTEL te enseña a leerlo</h3>
+          <p class="muted">A través de reglas claras, ejemplos en vivo, ejercicios prácticos y supervisión directa en sesiones en vivo y canales VIP. No se trata solo de teoría: se demuestra en operativas reales y verificables.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CURSO: DESGLOSE DE 12 MÓDULOS -->
+    <section class="card fade-up" style="margin-top:18px;">
+      <h2>Curso profesional — Desglose de 12 módulos</h2>
+      <p class="muted">Cada módulo combina teoría, ejemplos prácticos y tareas para que domines la estrategia paso a paso.</p>
+
+      <div class="video-list" style="margin-top:12px">
+        <div class="video-item"><strong>Módulo 1:</strong> Fundamentos del mercado y la filosofía IPDA</div>
+        <div class="video-item"><strong>Módulo 2:</strong> Herramientas, plataformas y layout recomendado</div>
+        <div class="video-item"><strong>Módulo 3:</strong> Identificación de zonas institucionales y liquidez</div>
+        <div class="video-item"><strong>Módulo 4:</strong> Señales de entrada y confirmación de flujo</div>
+        <div class="video-item"><strong>Módulo 5:</strong> Gestión de riesgo y sizing de posición</div>
+        <div class="video-item"><strong>Módulo 6:</strong> Scalping táctico y micro-gestión</div>
+        <div class="video-item"><strong>Módulo 7:</strong> Operativa en distintos marcos temporales</div>
+        <div class="video-item"><strong>Módulo 8:</strong> Psicología aplicada al trading profesional</div>
+        <div class="video-item"><strong>Módulo 9:</strong> Adaptación del sistema a volatilidad extrema</div>
+        <div class="video-item"><strong>Módulo 10:</strong> Revisión y análisis de operaciones reales</div>
+        <div class="video-item"><strong>Módulo 11:</strong> Optimización y control del drawdown</div>
+        <div class="video-item"><strong>Módulo 12:</strong> Roadmap para independencia operativa y scaling</div>
+      </div>
+      <p class="muted" style="margin-top:10px">Material adicional: plantillas, checklists y ejemplos descargables (incluidos en la membresía completa).</p>
+    </section>
+
+    <!-- CANALES VIP Y LIVES -->
+    <section class="card fade-up" style="margin-top:18px;">
+      <h2>Canales VIP, Lives y Operativa en tiempo real</h2>
+      <p class="muted">Los canales VIP son el corazón operativo: allí publicamos zonas, setups y operaciones. Complementamos con lives diarias en las que un trader profesional ejecuta en tiempo real, explica la lógica y responde dudas.</p>
+
+      <div class="grid" style="margin-top:12px">
+        <div>
+          <h4>Canales VIP</h4>
+          <p class="muted">Análisis pre-mercado, zonas calientes, entrada sugerida y post-operativa (registro de resultados). Ideal para traders que quieren seguir señales educativas y ver el razonamiento detrás de cada trade.</p>
+        </div>
+        <div>
+          <h4>Lives privadas</h4>
+          <p class="muted">Sesiones guiadas — formato privado y exclusivo. La idea es que veas la implementación real del sistema y puedas replicarla con supervisión.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SOPORTE Y MENTORING -->
+    <section class="card fade-up" style="margin-top:18px;">
+      <h2>Soporte, mentoring y llamadas privadas</h2>
+      <p class="muted">Además del material, el soporte es personalizado. Ofrecemos:</p>
+
+      <div class="cards" style="margin-top:10px">
+        <div class="mini">
+          <strong>Chat de apoyo</strong>
+          <div class="muted" style="margin-top:6px">Intercambio continuo para resolución de dudas y revisión rápida de setups.</div>
+        </div>
+        <div class="mini">
+          <strong>Contacto con administradores</strong>
+          <div class="muted" style="margin-top:6px">Comunicación directa para cuestiones administrativas y operativas.</div>
+        </div>
+        <div class="mini">
+          <strong>Mentoring privado</strong>
+          <div class="muted" style="margin-top:6px">Sesiones por video llamada para revisar puntos específicos y planes de mejora.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- RESULTADOS / TRANSPARENCIA -->
+    <section class="card fade-up" style="margin-top:18px;">
+      <h2>Transparencia en la operativa</h2>
+      <p class="muted">Creemos en mostrar procesos, no promesas. En los canales VIP y las lives publicamos operaciones, razonamiento y gestión. Los resultados dependen de la disciplina y la correcta ejecución por parte del alumno.</p>
+
+      <div class="testimonials">
+        <div class="test">
+          <strong>Testimonio — Anónimo</strong>
+          <div class="quote">"La metodología cambió mi forma de leer el mercado. Antes perdía constantemente; ahora tengo reglas claras."</div>
+          <div class="muted" style="margin-top:8px;font-size:13px">Usuario verificado — Miembro desde 6 meses</div>
+        </div>
+        <div class="test">
+          <strong>Testimonio — Anónimo</strong>
+          <div class="quote">"Los lives y el soporte valen cada centavo. Poder ver la operativa en vivo es un acelerador." </div>
+          <div class="muted" style="margin-top:8px;font-size:13px">Usuario verificado — Miembro desde 3 meses</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="card fade-up" style="margin-top:18px;">
+      <h2>Preguntas frecuentes (FAQ)</h2>
+      <div class="faq">
+        <div class="q">
+          <strong>¿Garantizan ganancias?</strong>
+          <p class="muted">No garantizamos rentabilidad. Entregamos metodologías, reglas y acompañamiento — el resultado depende del uso disciplinado por parte del alumno.</p>
+        </div>
+        <div class="q">
+          <strong>¿Qué duración tiene el curso?</strong>
+          <p class="muted">El curso consta de 12 vídeos, diseñados para completarse en formato intensivo o a ritmo propio. Las lives y el soporte son continuos mientras se mantenga la membresía.</p>
+        </div>
+        <div class="q">
+          <strong>¿Cómo me suscribo?</strong>
+          <p class="muted">La suscripción se gestiona manualmente. Para iniciar el acceso escribe a: <span style="font-weight:800;color:var(--accent)">theelitegrow.com</span> indicando tu interés. Un administrador te responderá con instrucciones y detalles de pago.</p>
+        </div>
+        <div class="q">
+          <strong>¿Qué métodos de pago aceptan?</strong>
+          <p class="muted">Las modalidades de pago se definen en la comunicación por correo. Se gestiona cada alta de forma personalizada para mantener seguridad y control de acceso.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONDICIONES / RIESGOS -->
+    <section class="card fade-up" style="margin-top:18px;">
+      <h2>Advertencia y condiciones</h2>
+      <p class="muted">El trading conlleva riesgos significativos. IDCARTEL ofrece formación, análisis y acompañamiento; no somos asesores financieros personales ni prometemos resultados. Cada participante es responsable de sus decisiones y del capital utilizado.</p>
+      <p class="muted">Al solicitar acceso aceptas que la ejecución de las operaciones y la disciplina son responsabilidad del alumno.</p>
+    </section>
+
+    <!-- CONTACTO -->
+    <section class="card fade-up" style="margin-top:18px;">
+      <h2>Contacto oficial</h2>
+      <p class="muted">Para inscripciones, información detallada y coordinación de acceso escribe únicamente a nuestro contacto oficial. Todas las altas se gestionan manualmente por este canal.</p>
+
+      <div class="contact" style="margin-top:12px">
+        <div class="contact-line"><div class="label">Contacto único</div><div class="value">theelitegrow.com</div></div>
+        <div class="contact-line"><div class="label">Proceso de inscripción</div><div class="muted">Envía correo manifestando interés. Se dará respuesta con instrucciones y términos.</div></div>
+        <div class="contact-line"><div class="label">Precio inicial</div><div class="value">$300 — primer mes (acceso completo)</div></div>
+        <div class="contact-line"><div class="label">Reactivación mensual</div><div class="value">$30 / mes</div></div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="fade-up" style="margin-top:20px">
+      <div>
+        <div style="font-weight:900;font-size:15px">IDCARTEL</div>
+        <div class="muted" style="margin-top:6px">Academia de Trading • IPDA &amp; Smart Money</div>
+      </div>
+
+      <div style="text-align:right">
+        <div class="copyright">© IDCARTEL — Todos los derechos reservados.</div>
+        <div class="muted" style="margin-top:6px">Contacto oficial: <span style="color:var(--accent);font-weight:800">theelitegrow.com</span></div>
+      </div>
+    </footer>
+
+  </div>
+
+  <script>
+    // Small JS to animate elements into view for professional feel (no external calls, no forms)
+    (function(){
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+          if (e.isIntersecting) e.target.classList.add('inview');
+        });
+      }, {threshold: 0.08});
+      document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+      // subtle header micro animation
+      const logo = document.querySelector('.logo');
+      if (logo) {
+        logo.classList.add('pulse');
+        setTimeout(()=> logo.classList.remove('pulse'), 4000);
+      }
+      // Accessibility: allow copy of contact by click (no auto-send)
+      const contactValue = document.querySelector('.contact .value');
+      if(contactValue){
+        contactValue.setAttribute('title','Copiar contacto al portapapeles');
+        contactValue.style.cursor = 'copy';
+        contactValue.addEventListener('click', function(){
+          // copy text to clipboard if allowed
+          const text = contactValue.textContent.trim();
+          try {
+            navigator.clipboard?.writeText(text);
+            const original = contactValue.textContent;
+            contactValue.textContent = 'Copiado — ' + text;
+            setTimeout(()=> contactValue.textContent = original, 1800);
+          } catch(e){
+            // fallback visual only
+            contactValue.textContent = 'Selecciona y copia: ' + text;
+            setTimeout(()=> contactValue.textContent = text, 2000);
+          }
+        });
+      }
+    })();
+  </script>
+</body>
+</html>
